@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <div class="cart">
+    <div class="cart" v-for="item in cart" :key="item.id">
       <span class="navbar-brand mb-0">Cart (0)</span>
       <ul class="list-group">
         <li class="list-group-item">
           <div class="d-flex">
             <div class="flex-shrink-0">
-              <img src="#" alt="...">
+              <img :src="item.imgUrl" :alt="item.title">
             </div>
             <div class="flex-grow-1 ms-3">
               <ul class="list-group">
                 <li class="list-group-item d-flex flex-column">
                   <div class="d-flex flex-row justify-content-between align-items-center">
-                    <span class="flex-grow-1 text-left">A list item</span>
+                    <span class="flex-grow-1 text-left">{{ item.title }}</span>
                     <button
                       type="button"
                       class="btn-amount btn-close"
@@ -38,10 +38,15 @@
 </template>
 
 <script>
-  export default {
-    name: 'ProductCart',
-    components: {}
-  }
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'ProductCart',
+  components: {},
+  computed: {
+    ...mapGetters(['cart'])
+  },
+}
 </script>
 
 <style lang="scss" scoped>

@@ -19,17 +19,23 @@
 </template>
 
 <script>
-import products from '../mock/products.json'
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ProductList',
   components: {},
-  data() {
-    return {
-      products
-    }
-  }
 
+  methods: {
+    ...mapActions((['getProducts'])),
+  },
+
+  computed: {
+    ...mapGetters(['products']),
+  },
+
+  mounted() {
+    this.getProducts();
+  },
 }
 </script>
 
