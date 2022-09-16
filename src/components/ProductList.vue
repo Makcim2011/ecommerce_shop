@@ -11,7 +11,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ item.title }}</h5>
           <p class="card-text">Price: {{ item.price }} $</p>
-          <a href="#" class="btn btn-primary">Add to card</a>
+          <a href="#" @click="addToCart(item)" class="btn btn-primary">Add to card</a>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@ export default {
   components: {},
 
   methods: {
-    ...mapActions((['getProducts'])),
+    ...mapActions((['getProducts', 'addToCart'])),
   },
 
   computed: {

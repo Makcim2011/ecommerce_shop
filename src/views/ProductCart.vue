@@ -1,31 +1,31 @@
 <template>
   <div class="container">
     <div class="cart" v-for="item in cart" :key="item.id">
-      <span class="navbar-brand mb-0">Cart (0)</span>
       <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item m-2">
           <div class="d-flex">
             <div class="flex-shrink-0">
-              <img :src="item.imgUrl" :alt="item.title">
+              <img :src="item.imgUrl" class="img-thumbnail" :alt="item.title">
             </div>
             <div class="flex-grow-1 ms-3">
               <ul class="list-group">
                 <li class="list-group-item d-flex flex-column">
                   <div class="d-flex flex-row justify-content-between align-items-center">
-                    <span class="flex-grow-1 text-left">{{ item.title }}</span>
+                    <p class="flex-grow-1 text-left">{{ item.title }}</p>
                     <button
                       type="button"
                       class="btn-amount btn-close"
                       data-bs-dismiss="modal"
                       aria-label="Close"
+                      @click="removeItem(item.id)"
                       >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="d-flex flex-row justify-content-center align-items-center">
-                    <button class="btn-amount btn btn-sm m-2">-</button>
-                    x 1
-                    <button class="btn-amount btn btn-sm m-2">+</button>
+                    <button @click="reduceAmount(item.id)" class="btn-amount btn btn-sm m-2">-</button>
+                    x {{ item.amount }}
+                    <button @click="addAmount(item.id)" class="btn-amount btn btn-sm m-2">+</button>
                   </div>
                 </li>
               </ul>
@@ -38,13 +38,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ProductCart',
   components: {},
   computed: {
     ...mapGetters(['cart'])
+  },
+  methods: {
+    ...mapActions((['getProducts', 'addToCart', 'addAmount', 'reduceAmount', 'removeItem'])),
   },
 }
 </script>
