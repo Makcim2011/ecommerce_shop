@@ -1,5 +1,20 @@
 <template>
   <div class="container">
+    <div
+      v-if="!cart.length"
+      class="alert alert-secondary mt-2"
+      role="alert"
+      >
+      No product in cart!
+    </div>
+    <div
+      v-if="orderPlaced"
+      class="alert alert-success"
+      role="alert"
+      >
+      Order successfully placed!
+    </div>
+
     <div class="cart" v-for="item in cart" :key="item.id">
       <ul class="list-group">
         <li class="list-group-item m-2">
@@ -35,10 +50,15 @@
       </ul>
     </div>
     <button
-      class="btn btn-lg btn-block btn-success"
+      class="btn btn-lg btn-block btn-success mt-3"
       v-if="cart.length"
+      :disabled="isProcessing"
+      @click="placeOrder"
       >
-      Checlout ({{ totalPrice }} $)
+      <span v-if="!isProcessing" >Checkout ({{ totalPrice }} $)</span>
+      <div v-else class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </button>
   </div>
 </template>
@@ -49,6 +69,12 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'ProductCart',
   components: {},
+  data() {
+    return {
+      isProcessing: false,
+      orderPlaced: false,
+    }
+  },
   computed: {
     ...mapGetters(['cart']),
     totalPrice() {
@@ -56,7 +82,22 @@ export default {
     }
   },
   methods: {
-    ...mapActions((['getProducts', 'addToCart', 'addAmount', 'reduceAmount', 'removeItem'])),
+    ...mapActions((['getProducts', 'addToCart', 'addAmount', 'reduceAmount', 'removeItem', 'emptyCart'])),
+
+    placeOrder() {
+      this.isProcessing = true,
+      setTimeout(() => {
+        this.orderPlaced = true;
+        this.isProcessing = false;
+        this.emptyCart();
+        this.doNotShowPlaceOrder();
+      }, 1000);
+    },
+    doNotShowPlaceOrder() {
+      setTimeout(() => {
+      this.orderPlaced = false;
+      }, 1500);
+    },
   },
 }
 </script>

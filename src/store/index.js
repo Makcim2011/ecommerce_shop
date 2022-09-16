@@ -26,6 +26,9 @@ export default createStore({
     removeItem({commit}, id) {
       commit('removeItem', id)
     },
+    emptyCart({ commit }) {
+      commit('emptyCart')
+    }
   },
   mutations: {
     getProductData(state) {
@@ -55,6 +58,9 @@ export default createStore({
     removeItem(state, id) {
       state.cart = state.cart.filter(product => product.id !== id)
     },
+    emptyCart(state) {
+      state.cart = [];
+    }
   },
   modules: {
   }
