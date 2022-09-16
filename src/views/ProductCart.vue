@@ -3,8 +3,8 @@
     <div class="cart" v-for="item in cart" :key="item.id">
       <ul class="list-group">
         <li class="list-group-item m-2">
-          <div class="d-flex">
-            <div class="flex-shrink-0">
+          <div class="d-flex flex-column flex-md-row justify-content-center">
+            <div class="flex-shrink-0" style="width: 10rem;">
               <img :src="item.imgUrl" class="img-thumbnail" :alt="item.title">
             </div>
             <div class="flex-grow-1 ms-3">
@@ -34,6 +34,12 @@
         </li>
       </ul>
     </div>
+    <button
+      class="btn btn-lg btn-block btn-success"
+      v-if="cart.length"
+      >
+      Checlout ({{ totalPrice }} $)
+    </button>
   </div>
 </template>
 
@@ -44,7 +50,10 @@ export default {
   name: 'ProductCart',
   components: {},
   computed: {
-    ...mapGetters(['cart'])
+    ...mapGetters(['cart']),
+    totalPrice() {
+      return this.cart.reduce((a,b) => a+b.amount*b.price, 0)
+    }
   },
   methods: {
     ...mapActions((['getProducts', 'addToCart', 'addAmount', 'reduceAmount', 'removeItem'])),
