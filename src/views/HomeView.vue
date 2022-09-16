@@ -1,17 +1,18 @@
 <template>
   <div class="home">
-    <BunnerHeader/>
+    <div class="container">
+      <ProductList/>
+    </div>
   </div>
 </template>
 
 <script>
-import BunnerHeader from '@/components/BunnerHeader.vue';
-// @ is an alias to /src
+import ProductList from '@/components/ProductList.vue';
 
 export default {
   name: 'HomeView',
   components: {
-    BunnerHeader
+    ProductList,
 }
 }
 </script>

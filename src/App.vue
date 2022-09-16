@@ -1,6 +1,18 @@
 <template>
+  <BunnerHeader/>
   <router-view/>
 </template>
+
+<script>
+import BunnerHeader from './components/BunnerHeader.vue';
+
+export default {
+  name: "App",
+  components: {
+    BunnerHeader
+},
+}
+</script>
 
 <style lang="scss">
 #app {
