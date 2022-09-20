@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div
         class="card align-items-center justify-content-center align-self-end"
         style="width: 15rem;"
