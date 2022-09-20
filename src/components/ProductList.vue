@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div
-        class="card align-items-center align-self-end"
+        class="card align-items-center justify-content-center align-self-end"
         style="width: 15rem;"
         v-for="item in products"
         :key="item.id"
