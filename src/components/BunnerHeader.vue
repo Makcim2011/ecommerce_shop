@@ -1,9 +1,9 @@
 <template>
   <div>
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-white">
       <div class="container-fluid">
-        <router-link class="navbar-brand mb-0 h1" to="/">Home</router-link> |
-        <router-link to="/productCart">Cart ({{ totalAmount }})</router-link>
+        <router-link class="navbar-brand mb-0 h1" to="/">Home</router-link>
+        <router-link to="/productCart"><fa :icon="['fas', 'cart-plus']"/> ({{ totalAmount }})</router-link>
       </div>
     </nav>
   </div>

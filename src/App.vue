@@ -1,6 +1,8 @@
 <template>
-  <BunnerHeader/>
-  <router-view/>
+  <div class="container">
+    <BunnerHeader/>
+    <router-view/>
+  </div>
 </template>
 
 <script>
