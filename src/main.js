@@ -12,12 +12,12 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, fab)
 
-
-
-
 import App from './App.vue'
 import router from './router'
 import store from './store'
 
-createApp(App).component('fa', FontAwesomeIcon).use(store).use(router).mount('#app')
-App.config.productionTip = false
+const APP = createApp(App)
+APP.component('font-awesome-icon', FontAwesomeIcon)
+APP.use(store)
+APP.use(router)
+APP.mount('#app')

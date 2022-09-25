@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <form class="d-flex ms-auto pt-3" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="btn btn-outline-success" type="submit" @click="sortProducts(text)">Search</button>
     </form>
     <div class="row justify-content-center">
       <div
@@ -11,10 +11,28 @@
         v-for="item in products"
         :key="item.id"
         >
-        <img :src="item.imgUrl" class="card-img-top" :alt="item.title">
+        <img :src="item.images[0]" class="card-img-top" :alt="item.title">
         <div class="card-body">
           <h5 class="card-title">{{ item.title }}</h5>
           <p class="card-text">Price: {{ item.price }} $</p>
+          <div class="d-flex justify-content-center">
+            <div
+              v-for="star in 5"
+              :key="`your-rating-star-${star}`"
+              class="mx-2"
+              >
+              <template v-if="item.rating >= star">
+                <font-awesome-icon :icon="['fas', 'star']" class="text-warning"/>
+              </template>
+              <template v-else-if="item.rating <= 0.5">
+                <font-awesome-icon :icon="['fas', 'star-half-stroke']" class="text-warning"/>
+              </template>
+              <template v-else>
+                <font-awesome-icon :icon="['fas', 'star']" class="text-secondary"/>
+              </template>
+            </div>
+            {{ item.rating }}
+          </div>
           <a href="#" @click="addToCart(item)" class="btn btn-primary">Add to card</a>
         </div>
       </div>
@@ -23,22 +41,28 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'ProductList',
+  data() {
+    return {
+    }
+  },
   components: {},
+  props: {
+    products: [
+    ]
+  },
 
   methods: {
-    ...mapActions((['getProducts', 'addToCart'])),
+    ...mapActions((['addToCart'])),
   },
 
   computed: {
-    ...mapGetters(['products']),
   },
 
   mounted() {
-    this.getProducts();
   },
 }
 </script>

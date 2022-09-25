@@ -3,7 +3,7 @@
     <nav class="navbar sticky navbar-white bg-white mb-5">
       <div class="container-fluid">
         <router-link class="navbar-brand mb-0 h1" to="/">ecommerse_shop</router-link>
-        <router-link to="/productCart"><fa :icon="['fas', 'cart-plus']"/> ({{ totalAmount }})</router-link>
+        <router-link to="/productCart"><font-awesome-icon :icon="['fas', 'cart-plus']"/> ({{ totalAmount }})</router-link>
       </div>
     </nav>
   </div>

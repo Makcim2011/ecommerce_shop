@@ -6,9 +6,9 @@
     </div>
 
     <div>
-      <a class="btn m-1" href="https://www.linkedin.com/in/%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC-%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2-4683b1213/" target="_blank" role="button"><fa :icon="['fab', 'linkedin']"/></a>
-      <a class="btn m-1" href="http://t.me/IvanovMaksym" target="_blank" role="button"><fa :icon="['fab', 'telegram']"/></a>
-      <a class="btn m-1" href="https://github.com/Makcim2011" target="_blank" role="button"><fa :icon="['fab', 'github']"/></a>
+      <a class="btn m-1" href="https://www.linkedin.com/in/%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC-%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2-4683b1213/" target="_blank" role="button"><font-awesome-icon :icon="['fab', 'linkedin']"/></a>
+      <a class="btn m-1" href="http://t.me/IvanovMaksym" target="_blank" role="button"><font-awesome-icon :icon="['fab', 'telegram']"/></a>
+      <a class="btn m-1" href="https://github.com/Makcim2011" target="_blank" role="button"><font-awesome-icon :icon="['fab', 'github']"/></a>
     </div>
   </section>
 
@@ -17,7 +17,7 @@
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <h6 class="text-uppercase fw-bold mb-4">
-            <fa :icon="['fas', 'laptop']"/> Company name
+            <font-awesome-icon :icon="['fas', 'laptop']"/> Company name
           </h6>
           <p>
             Here you can use rows and columns to organize your footer content. Lorem ipsum
@@ -66,15 +66,15 @@
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
           <p>
-            <fa :icon="['fas', 'home']"/>
+            <font-awesome-icon :icon="['fas', 'home']"/>
             Klekotyna, Vinnytsia 23525, UA
           </p>
           <p>
-            <fa :icon="['fas', 'envelope']"/>
+            <font-awesome-icon :icon="['fas', 'envelope']"/>
             info@example.com
           </p>
           <p>
-            <fa :icon="['fas', 'phone']"/>
+            <font-awesome-icon :icon="['fas', 'phone']"/>
             + 38 066 70 23 841
           </p>
         </div>

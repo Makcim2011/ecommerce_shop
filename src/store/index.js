@@ -1,21 +1,21 @@
 import { createStore } from 'vuex'
-import products from '../mock/products.json'
 
 export default createStore({
   state: {
-    products: [],
     cart: []
   },
   getters: {
-    products: state => state.products,
     cart: state =>  state.cart
   },
   actions: {
-    getProducts({ commit }) {
-      commit('getProductData')
-    },
     addToCart({ commit }, item) {
       commit('addItemToCart', item);
+      const addedItem = this.state.cart.find(product => product.id === item.id);
+      if(addedItem) {
+        addedItem.amount++
+      } else {
+        addedItem.amount = 1
+      }
     },
     addAmount({commit}, id) {
       commit('addAmount', id)
@@ -28,20 +28,11 @@ export default createStore({
     },
     emptyCart({ commit }) {
       commit('emptyCart')
-    }
+    },
   },
   mutations: {
-    getProductData(state) {
-      state.products = products;
-    },
     addItemToCart(state, item) {
-
-      const addedItem = state.cart.find(product => product.id === item.id);
-      if(addedItem) {
-        addedItem.amount++
-      } else {
-        state.cart.push({ ...item, amount: 1 })
-      }
+      state.cart.push({ ...item, amount: this.addedItem })
     },
     addAmount(state, id) {
       const currentItem = state.cart.find(product => product.id === id);
@@ -60,7 +51,7 @@ export default createStore({
     },
     emptyCart(state) {
       state.cart = [];
-    }
+    },
   },
   modules: {
   }

@@ -1,15 +1,18 @@
 <template>
     <BunnerHeader/>
     <router-view/>
+    <FooterCompany/>
 </template>
 
 <script>
 import BunnerHeader from './components/BunnerHeader.vue';
+import FooterCompany from './components/FooterCompany.vue';
 
 export default {
   name: "App",
   components: {
-    BunnerHeader
+    BunnerHeader,
+    FooterCompany
 },
 }
 </script>
