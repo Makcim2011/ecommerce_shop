@@ -18,7 +18,9 @@ export default createStore({
       }
     },
     addAmount({commit}, id) {
-      commit('addAmount', id)
+      commit('addAmount', currentItem)
+      const currentItem = this.state.cart.find(product => product.id === id);
+      currentItem.amount++
     },
     reduceAmount({commit}, id) {
       commit('reduceAmount', id)
@@ -34,9 +36,8 @@ export default createStore({
     addItemToCart(state, item) {
       state.cart.push({ ...item, amount: this.addedItem })
     },
-    addAmount(state, id) {
-      const currentItem = state.cart.find(product => product.id === id);
-      currentItem.amount++
+    addAmount(state, item) {
+      state.cart.push({ ...item, amount: this.addAmount })
     },
     reduceAmount(state, id) {
       const currentItem = state.cart.find(product => product.id === id);
@@ -51,7 +52,7 @@ export default createStore({
     },
     emptyCart(state) {
       state.cart = [];
-    },
+    }
   },
   modules: {
   }

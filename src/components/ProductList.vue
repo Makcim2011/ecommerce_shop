@@ -1,9 +1,5 @@
 <template>
   <div class="container mt-5">
-    <form class="d-flex ms-auto pt-3" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit" @click="sortProducts(text)">Search</button>
-    </form>
     <div class="row justify-content-center">
       <div
         class="card align-items-center justify-content-center align-self-end"
