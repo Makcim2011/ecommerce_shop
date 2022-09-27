@@ -39,7 +39,7 @@ export default {
     },
     searchProduct(text) {
       console.log(text)
-      fetch('https://dummyjson.com/products/search?q=phone')
+      fetch('https://dummyjson.com/products/search?q='+text)
         .then(res => res.json())
         .then((res) => {
           console.log(res)
