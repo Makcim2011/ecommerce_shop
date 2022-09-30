@@ -11,7 +11,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ item.title }}</h5>
           <p class="card-text">Price: {{ item.price }} $</p>
-          <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center mx-2">
             <div
               v-for="star in 5"
               :key="`your-rating-star-${star}`"
@@ -47,8 +47,7 @@ export default {
   },
   components: {},
   props: {
-    products: [
-    ]
+    products: []
   },
 
   methods: {

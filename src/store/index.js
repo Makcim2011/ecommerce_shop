@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    cart: []
+    cart: [],
   },
   getters: {
     cart: state =>  state.cart
@@ -11,16 +11,18 @@ export default createStore({
     addToCart({ commit }, item) {
       commit('addItemToCart', item);
       const addedItem = this.state.cart.find(product => product.id === item.id);
+      console.log(addedItem)
       if(addedItem) {
-        addedItem.amount++
-      } else {
         addedItem.amount = 1
+      } else {
+        addedItem.amount++
       }
     },
     addAmount({commit}, id) {
-      commit('addAmount', currentItem)
-      const currentItem = this.state.cart.find(product => product.id === id);
-      currentItem.amount++
+      commit('addAmount', id)
+      // commit('addAmount', currentItem)
+      // const currentItem = this.state.cart.find(product => product.id === id);
+      // currentItem.amount++
     },
     reduceAmount({commit}, id) {
       commit('reduceAmount', id)
@@ -34,10 +36,16 @@ export default createStore({
   },
   mutations: {
     addItemToCart(state, item) {
+      console.log(item)
       state.cart.push({ ...item, amount: this.addedItem })
+
     },
-    addAmount(state, item) {
-      state.cart.push({ ...item, amount: this.addAmount })
+    addAmount(state, id) {
+      console.log(state, id)
+        const currentItem = state.cart.find(cart => cart.id === id);
+        // mutate state
+        currentItem.amount++
+      // state.cart.push({ ...item, amount: this.addAmount })
     },
     reduceAmount(state, id) {
       const currentItem = state.cart.find(product => product.id === id);
